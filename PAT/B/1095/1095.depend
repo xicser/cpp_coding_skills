@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1586180675 source:e:\sw\basic\oj\pat\b\1095\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1583858562 source:e:\sw\basic\oj\质因子分解\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<string.h>
+
