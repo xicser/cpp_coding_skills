@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1603093886 source:f:\demos\data_structure_and_algorithm_misc\cpp_sort\main.cpp
+	<stdio.h>
+	<iostream>
+	<algorithm>
+
