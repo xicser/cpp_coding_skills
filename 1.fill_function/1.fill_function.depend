@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1601381422 source:g:\demos\data_structure_and_algorithm_misc\1.fill_function\main.cpp
-	<iostream>
-	<algorithm>
-	<stdio.h>
-
