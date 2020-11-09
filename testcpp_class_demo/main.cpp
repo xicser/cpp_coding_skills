@@ -2,10 +2,12 @@
 
 using namespace std;
 
+
+
 class Base
 {
 public:
-    Base();
+    Base(void);
     Base(int val);
 
     int get_val(void);
@@ -14,7 +16,7 @@ public:
 private:
     int m_num;
 };
-Base::Base() : m_num(1) {
+Base::Base(void) : m_num(1) {
     cout << "this is Base()" << endl;
 }
 Base::Base(int val) : m_num(val) {
@@ -34,7 +36,8 @@ void Base::set_val(int val) {
 class BaseChild : public Base
 {
 public:
-    BaseChild(int val = 9);
+    BaseChild(void);
+    BaseChild(int val);
 
     int getval(void);
     void setval(int val);
@@ -42,6 +45,11 @@ public:
 private:
     int m_num;
 };
+
+BaseChild::BaseChild(void)
+{
+    cout << "this is BaseChild()" << endl;
+}
 BaseChild::BaseChild(int val) : Base(val), m_num(13) {
     cout << "this is BaseChild(val)" << endl;
 }
@@ -54,6 +62,8 @@ void BaseChild::setval(int val) {
 }
 
 
+
+
 class Test {
 public:
     Test() {
@@ -63,17 +73,29 @@ public:
         cout << "Test(int a)" << endl;
     };
 
+private:
+    BaseChild basechild;
 };
-
 
 void test(Test ts)
 {
-    cout << "test(Test ts)" << endl;
+    cout << "test function" << endl;
 }
+
+
 int main(int argc, char *argv[])
 {
-    BaseChild b;
+//    Base b1;
 
+//    BaseChild b2;
+
+//    Base *b3 = new Base(123);
+//
+//    BaseChild *b4 = new BaseChild(123);
+
+//    test(Test());
+
+//    Test t1;
 
 
     return 0;
