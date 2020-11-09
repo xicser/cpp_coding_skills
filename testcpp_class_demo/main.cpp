@@ -54,11 +54,27 @@ void BaseChild::setval(int val) {
 }
 
 
+class Test {
+public:
+    Test() {
+        cout << "Test()" << endl;
+    };
+    Test(int a) {
+        cout << "Test(int a)" << endl;
+    };
 
+};
+
+
+void test(Test ts)
+{
+    cout << "test(Test ts)" << endl;
+}
 int main(int argc, char *argv[])
 {
+    BaseChild b;
 
-    BaseChild c1;
+
 
     return 0;
 }
