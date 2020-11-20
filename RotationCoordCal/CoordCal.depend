@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1605845685 source:c:\users\wangxi\desktop\coordcal\main.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+
