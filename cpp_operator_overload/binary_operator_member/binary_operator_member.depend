@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1608517936 source:f:\data_structure_and_algorithm_misc\cpp_operator_overload\binary_operator_member\binary_operator_member.cpp
+	<iostream>
+	"binary_operator_member.h"
+
+1608517922 f:\data_structure_and_algorithm_misc\cpp_operator_overload\binary_operator_member\binary_operator_member.h
+
+1608519653 source:f:\data_structure_and_algorithm_misc\cpp_operator_overload\binary_operator_member\main.cpp
+	<iostream>
+	"binary_operator_member.h"
+
