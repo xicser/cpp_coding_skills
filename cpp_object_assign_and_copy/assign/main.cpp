@@ -23,7 +23,7 @@ public:
     }
 
     // 赋值运算符重载需要返回对象的引用, 否则返回后其值立即消失
-    ClassA & operator= (ClassA &obj)
+    ClassA & operator= (const ClassA &obj)
     {
         // 释放heap内存
         if (m_pszName != NULL)
@@ -45,11 +45,19 @@ public:
     int m_nId;
 };
 
+const ClassA & test(void)
+{
+    ClassA *retA = new ClassA();
+    return *retA;
+}
+
 int main()
 {
     ClassA obj1(1, "liitdar");
     ClassA obj2;
     ClassA obj3;
+
+    const ClassA &temp = test();
 
     obj3
     = obj2
