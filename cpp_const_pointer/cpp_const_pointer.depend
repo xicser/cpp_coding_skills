@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1608886217 source:f:\code\data_structure_and_algorithm_misc\cpp_const_pointer\main.cpp
+	<iostream>
+	<stdio.h>
+
