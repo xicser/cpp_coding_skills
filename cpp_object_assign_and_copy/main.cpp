@@ -6,15 +6,27 @@ using namespace std;
 class ClassA
 {
 public:
-    ClassA ()
-    {
-
+    ClassA () {
     }
     ClassA (int id, const char* name)
     {
         m_nId = id;
         m_pszName = new char[strlen(name) + 1];
         strcpy(m_pszName, name);
+    }
+
+    // 重载拷贝构造函数, 重载后的拷贝构造函数支持深拷贝
+    ClassA(const ClassA &obj)
+    {
+        // 拷贝 stack 域的值
+        m_nId = obj.m_nId;
+        // 新建 heap 空间
+        m_pszName = new char[strlen(obj.m_pszName) + 1];
+        // 拷贝 heap 空间的内容
+        if (m_pszName != NULL)
+        {
+            strcpy(m_pszName, obj.m_pszName);
+        }
     }
 
     ~ClassA ()
@@ -47,7 +59,7 @@ public:
 
 const ClassA & test(void)
 {
-    ClassA *retA = new ClassA();
+    ClassA *retA = new ClassA(3, "kernel");
     return *retA;
 }
 
@@ -55,9 +67,13 @@ int main()
 {
     ClassA obj1(1, "liitdar");
     ClassA obj2;
-    ClassA obj3;
+    ClassA obj3(2, "wangxi");
+    ClassA obj4(obj3);
 
-    const ClassA &temp = test();
+    cout << obj4.m_pszName << endl;
+
+    const ClassA &tempA = test();
+    cout << tempA.m_pszName << endl;
 
     obj3
     = obj2
