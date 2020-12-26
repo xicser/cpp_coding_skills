@@ -3,12 +3,17 @@
 
 using namespace std;
 
+class ClassA {
+
+};
+
 void test1(void);
 void test2(void);
 void test3(void);
 void test4(const int * const p);
 int * const test5(void);
 const int *test6(void);
+const ClassA test7(void);
 
 int main(void)
 {
@@ -23,9 +28,10 @@ int main(void)
     const int *q = test6();
     cout << *q << endl;
 
-
     int * const r = &a; //定义的时候，必须初始化
 //    r = 0;   //报错
+
+    ClassA b = test7();
 
     return 0;
 }
@@ -62,4 +68,10 @@ int * const test5(void)
 const int *test6(void)
 {
     return &a;
+}
+
+const ClassA test7(void)
+{
+    ClassA a;
+    return a;
 }
