@@ -3,7 +3,20 @@
 
 using namespace std;
 
-class ClassA
+
+class ClassBase
+{
+public:
+    ClassBase() {}
+    ClassBase(const ClassBase &obj) {
+        this->num = obj.num;
+    }
+
+private:
+    int num;
+};
+
+class ClassA : public ClassBase
 {
 public:
     ClassA () {
@@ -16,7 +29,7 @@ public:
     }
 
     // 重载拷贝构造函数, 重载后的拷贝构造函数支持深拷贝
-    ClassA(const ClassA &obj)
+    ClassA(const ClassA &obj) : ClassBase(obj) //这里指定调用父类的拷贝构造函数
     {
         // 拷贝 stack 域的值
         m_nId = obj.m_nId;
@@ -48,6 +61,10 @@ public:
         int nLength = strlen(obj.m_pszName);
         m_pszName = new char[nLength + 1];
         strcpy(m_pszName, obj.m_pszName);
+
+        //针对父类的处理
+//        this->num = ;
+
 
         return *this;
     }
