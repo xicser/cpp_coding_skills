@@ -14,6 +14,7 @@ void test4(const int * const p);
 int * const test5(void);
 const int *test6(void);
 const ClassA test7(void);
+const ClassA &test8(void);
 
 int main(void)
 {
@@ -32,6 +33,8 @@ int main(void)
 //    r = 0;   //报错
 
     ClassA b = test7();
+
+    const ClassA &c = test8();
 
     return 0;
 }
@@ -71,6 +74,12 @@ const int *test6(void)
 }
 
 const ClassA test7(void)
+{
+    ClassA a;
+    return a;
+}
+
+const ClassA &test8(void)
 {
     ClassA a;
     return a;

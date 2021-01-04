@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1583681238 source:e:\sw\basic\oj\stl\main.cpp
-	<iostream>
-	<vector>
-	<set>
-	<stdio.h>
-

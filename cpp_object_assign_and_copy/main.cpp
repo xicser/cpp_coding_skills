@@ -7,9 +7,12 @@ using namespace std;
 class ClassBase
 {
 public:
-    ClassBase() {}
+    ClassBase() {
+        cout << "ClassBase()" << endl;
+    }
     ClassBase(const ClassBase &obj) {
         this->num = obj.num;
+        cout << "ClassBase(const ClassBase &obj)" << endl;
     }
 
 private:
