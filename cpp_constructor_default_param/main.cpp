@@ -2,7 +2,21 @@
 
 using namespace std;
 
+
+
+class B {
+public:
+    B() {
+        cout << "B()" << endl;
+    }
+    B(int a) {
+        cout << "B(int a)" << endl;
+    }
+};
+
 class A {
+
+    B b;
 public:
     A() {
         cout << "A()" << endl;
@@ -12,6 +26,9 @@ public:
     }
     A(int a, int b = 6) {
         cout << "A(int a, int b)" << endl;
+    }
+    A(double a)  {
+        cout << "A(double a)" << endl;
     }
 };
 
@@ -28,13 +45,15 @@ void func(A a)
 */
 int main()
 {
-    A a1;               //A()
-//    A a2(2);          //A(2)
+//    A a1;               //A()
+////    A a2(2);          //A(2)
+//
+//    A *a3 = new A;      //A()
+//    A *a4 = new A();    //A()
+//
+//    func(A());          //A()
 
-    A *a3 = new A;      //A()
-    A *a4 = new A();    //A()
-
-    func(A());          //A()
+    A a5(1.2);
 
     return 0;
 }
