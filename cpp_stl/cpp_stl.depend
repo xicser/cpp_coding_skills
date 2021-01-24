@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1611468569 source:f:\code\basic_coding_misc\cpp_stl\main.cpp
+	<iostream>
+	"vectorDemo.h"
+	"setDemo.h"
+
+1611466259 f:\code\basic_coding_misc\cpp_stl\vectordemo.h
+
+1611468634 source:f:\code\basic_coding_misc\cpp_stl\vectordemo.cpp
+	<vector>
+	<stdio.h>
+
+1611468557 f:\code\basic_coding_misc\cpp_stl\setdemo.h
+
+1611468608 source:f:\code\basic_coding_misc\cpp_stl\setdemo.cpp
+	<set>
+	<stdio.h>
+
