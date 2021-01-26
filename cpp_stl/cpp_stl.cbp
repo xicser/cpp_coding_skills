@@ -33,8 +33,12 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="mapDemo.cpp" />
+		<Unit filename="mapDemo.h" />
 		<Unit filename="setDemo.cpp" />
 		<Unit filename="setDemo.h" />
+		<Unit filename="stringDemo.cpp" />
+		<Unit filename="stringDemo.h" />
 		<Unit filename="vectorDemo.cpp" />
 		<Unit filename="vectorDemo.h" />
 		<Extensions>
