@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1611468569 source:f:\code\basic_coding_misc\cpp_stl\main.cpp
+1611657558 source:f:\code\basic_coding_misc\cpp_stl\main.cpp
 	<iostream>
 	"vectorDemo.h"
 	"setDemo.h"
+	"stringDemo.h"
 
 1611466259 f:\code\basic_coding_misc\cpp_stl\vectordemo.h
 
@@ -12,7 +13,15 @@
 
 1611468557 f:\code\basic_coding_misc\cpp_stl\setdemo.h
 
-1611468608 source:f:\code\basic_coding_misc\cpp_stl\setdemo.cpp
+1611470536 source:f:\code\basic_coding_misc\cpp_stl\setdemo.cpp
+	<iostream>
 	<set>
 	<stdio.h>
+
+1611659025 source:f:\code\basic_coding_misc\cpp_stl\stringdemo.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+
+1611657499 f:\code\basic_coding_misc\cpp_stl\stringdemo.h
 
