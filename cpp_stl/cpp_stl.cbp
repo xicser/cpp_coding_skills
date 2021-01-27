@@ -35,6 +35,10 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mapDemo.cpp" />
 		<Unit filename="mapDemo.h" />
+		<Unit filename="prior_queueDemo.cpp" />
+		<Unit filename="prior_queueDemo.h" />
+		<Unit filename="queueDemo.cpp" />
+		<Unit filename="queueDemo.h" />
 		<Unit filename="setDemo.cpp" />
 		<Unit filename="setDemo.h" />
 		<Unit filename="stringDemo.cpp" />

@@ -10,6 +10,8 @@
 #include "setDemo.h"
 #include "stringDemo.h"
 #include "mapDemo.h"
+#include "queueDemo.h"
+#include "prior_queueDemo.h"
 
 using namespace std;
 
@@ -19,6 +21,8 @@ int main()
     setDemo();
     stringDemo();
     mapDemo();
+    queueDemo();
+    prior_queueDemo();
 
     return 0;
 }
