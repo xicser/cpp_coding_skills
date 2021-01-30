@@ -14,6 +14,7 @@
 #include "prior_queueDemo.h"
 #include "stackDemo.h"
 #include "pairDemo.h"
+#include "algorithmDemo.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ int main()
     prior_queueDemo();
     stackDemo();
     pairDemo();
+    algorithmDemo();
 
 
     return 0;
