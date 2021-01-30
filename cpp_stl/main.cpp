@@ -12,6 +12,7 @@
 #include "mapDemo.h"
 #include "queueDemo.h"
 #include "prior_queueDemo.h"
+#include "stackDemo.h"
 
 using namespace std;
 
@@ -19,10 +20,12 @@ int main()
 {
     vectorDemo();
     setDemo();
-    stringDemo();
+   // stringDemo();
     mapDemo();
     queueDemo();
     prior_queueDemo();
+    stackDemo();
+
 
     return 0;
 }
