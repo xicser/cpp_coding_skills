@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1611972345 source:f:\code\basic_coding_misc\cpp_stl\main.cpp
+1611972775 source:f:\code\basic_coding_misc\cpp_stl\main.cpp
 	<iostream>
 	"vectorDemo.h"
 	"setDemo.h"
@@ -8,6 +8,7 @@
 	"queueDemo.h"
 	"prior_queueDemo.h"
 	"stackDemo.h"
+	"pairDemo.h"
 
 1611466259 f:\code\basic_coding_misc\cpp_stl\vectordemo.h
 
@@ -53,4 +54,17 @@
 	"prior_queueDemo.h"
 
 1611971903 f:\code\basic_coding_misc\cpp_stl\stackdemo.h
+
+1611972716 f:\code\basic_coding_misc\cpp_stl\pairdemo.h
+
+1611972521 source:f:\code\basic_coding_misc\cpp_stl\stackdemo.cpp
+	<iostream>
+	<stack>
+	<stdio.h>
+
+1611973921 source:f:\code\basic_coding_misc\cpp_stl\pairdemo.cpp
+	<iostream>
+	<utility>
+	<map>
+	<stdio.h>
 
