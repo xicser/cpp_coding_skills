@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1612186437 source:f:\code\basic_coding_misc\cpp_template\main.cpp
+	<iostream>
+	"funcTemplate.h"
+	"funcTemplateOverload.h"
+
+1612183276 f:\code\basic_coding_misc\cpp_template\functemplate.h
+
+1612184651 source:f:\code\basic_coding_misc\cpp_template\functemplate.cpp
+	<iostream>
+
+1612186410 source:f:\code\basic_coding_misc\cpp_template\functemplateoverload.cpp
+	<iostream>
+
+1612186447 f:\code\basic_coding_misc\cpp_template\functemplateoverload.h
+
