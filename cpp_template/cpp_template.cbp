@@ -38,6 +38,8 @@
 		<Unit filename="funcTemplate.h" />
 		<Unit filename="funcTemplateOverload.cpp" />
 		<Unit filename="funcTemplateOverload.h" />
+		<Unit filename="listTemplate.cpp" />
+		<Unit filename="listTemplate.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
