@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1612693307 source:i:\code\basic_coding_misc\cpp_fileops\main.cpp
+	<iostream>
+	"input_output.h"
+
+1612693140 i:\code\basic_coding_misc\cpp_fileops\input_output.h
+	<string>
+
+1612693507 source:i:\code\basic_coding_misc\cpp_fileops\input_output.cpp
+	<iostream>
+	<fstream>
+	"input_output.h"
+
