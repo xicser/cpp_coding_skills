@@ -1,44 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include "stream_operator.h"
+#include "Employee.h"
 
 using namespace std;
 
-void Employee::setId(void)
-{
-    cout << "\n输入雇员编号：";
-    cin >> id;
-}
-
-void Employee::setName(void)
-{
-    cout << "\n输入雇员姓名：";
-    cin >> name;
-}
-
-void Employee::setAddr(void)
-{
-    cout << "\n输入雇员地址：";
-    cin >> addr;
-}
-
-int Employee::getId(void)
-{
-    return id;
-}
-
-string Employee::getName(void)
-{
-    return name;
-}
-
-string Employee::getAddr(void)
-{
-    return addr;
-}
-
-
-void testInputOutputNum(void)
+void testStreamOperatorNum(void)
 {
     ofstream outfile;
     outfile.open("./int.dat", ios::out);
@@ -61,7 +28,7 @@ void testInputOutputNum(void)
     inputfile.close();
 }
 
-void testInputOutputString(void)
+void testStreamOperatorString(void)
 {
     ofstream outfile;
     outfile.open("./string.dat", ios::out);
@@ -69,7 +36,7 @@ void testInputOutputString(void)
         cout << "打开写入文件失败" << endl;
         return;
     }
-    outfile << "Hello buddy!" << endl;
+    outfile << "Hello buddy!";
     outfile.close();
 
     ifstream inputfile;
@@ -84,7 +51,7 @@ void testInputOutputString(void)
     inputfile.close();
 }
 
-void testInputOutputObj(void)
+void testStreamOperatorObj(void)
 {
     ofstream outfile;
     outfile.open("./employee.dat", ios::out);

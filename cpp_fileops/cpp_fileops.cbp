@@ -32,7 +32,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Employee.cpp" />
+		<Unit filename="Employee.h" />
+		<Unit filename="binary_file.cpp" />
+		<Unit filename="binary_file.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="random.cpp" />
+		<Unit filename="random.h" />
+		<Unit filename="stream_func.cpp" />
+		<Unit filename="stream_func.h" />
+		<Unit filename="stream_operator.cpp" />
+		<Unit filename="stream_operator.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
