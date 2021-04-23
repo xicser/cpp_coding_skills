@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1619183046 source:g:\code\basic_coding_misc\cpp_smart_pointer\main.cpp
+	"shared_ptr.h"
+	"mutual_reference.h"
+
+1619182344 source:g:\code\basic_coding_misc\cpp_smart_pointer\shared_ptr.cpp
+	<iostream>
+	<memory>
+	"shared_ptr.h"
+
+1619182319 g:\code\basic_coding_misc\cpp_smart_pointer\shared_ptr.h
+
+1619183177 source:g:\code\basic_coding_misc\cpp_smart_pointer\mutual_reference.cpp
+	<iostream>
+	<memory>
+	"mutual_reference.h"
+
+1619183392 g:\code\basic_coding_misc\cpp_smart_pointer\mutual_reference.h
+	<memory>
+	<iostream>
+

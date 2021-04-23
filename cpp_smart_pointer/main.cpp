@@ -1,20 +1,12 @@
-#include <iostream>
-#include <memory>
+#include "shared_ptr.h"
+#include "mutual_reference.h"
 
 using namespace std;
 
-
-class Dog {
-
-};
-
 int main()
 {
-    auto_ptr<Dog> pDog(new Dog());
-    auto_ptr<double> pd(new double);
-
-    *pd = 100.45;
-    cout << *pd;
+    test_shared_ptr();
+    test_mutual_ref_ptr();
 
     return 0;
 }
