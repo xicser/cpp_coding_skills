@@ -19,3 +19,31 @@
 	<memory>
 	<iostream>
 
+1619232813 source:f:\code\basic_coding_misc\cpp_smart_pointer\main.cpp
+	"shared_ptr.h"
+	"mutual_reference.h"
+	"weak_ptr.h"
+
+1619230245 f:\code\basic_coding_misc\cpp_smart_pointer\shared_ptr.h
+
+1619232986 f:\code\basic_coding_misc\cpp_smart_pointer\mutual_reference.h
+	<memory>
+	<iostream>
+
+1619231369 f:\code\basic_coding_misc\cpp_smart_pointer\weak_ptr.h
+	<iostream>
+
+1619230245 source:f:\code\basic_coding_misc\cpp_smart_pointer\mutual_reference.cpp
+	<iostream>
+	<memory>
+	"mutual_reference.h"
+
+1619230245 source:f:\code\basic_coding_misc\cpp_smart_pointer\shared_ptr.cpp
+	<iostream>
+	<memory>
+	"shared_ptr.h"
+
+1619232474 source:f:\code\basic_coding_misc\cpp_smart_pointer\weak_ptr.cpp
+	"weak_ptr.h"
+	<memory>
+

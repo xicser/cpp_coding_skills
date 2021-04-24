@@ -36,7 +36,8 @@ public:
         return this->height;
     }
 
-    shared_ptr<Mouse> ppMouse;
+//    shared_ptr<Mouse> ppMouse;
+    weak_ptr<Mouse> ppMouse;  //解决相互引用问题
 private:
     int age;
     int height;
@@ -66,7 +67,8 @@ public:
         return this->height;
     }
 
-    shared_ptr<Cat> ppCat;
+//    shared_ptr<Cat> ppCat;
+    weak_ptr<Cat> ppCat;  //解决相互引用问题
 private:
     int age;
     int height;

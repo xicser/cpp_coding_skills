@@ -18,5 +18,5 @@ void test_mutual_ref_ptr(void)
     cout << pMouse.use_count() << endl;         //2
     cout << pCat.use_count() << endl;           //2
 
-    //会内存泄漏
+    //如果不使用weak_ptr, 会内存泄漏
 }
