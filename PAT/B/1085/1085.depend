@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1586272946 source:e:\sw\basic\oj\pat\b\1085\main.cpp
-	<iostream>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<map>
-

@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1585966231 source:e:\sw\basic\oj\pat\b\1080\main.cpp
-	<iostream>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<string>
-	<map>
-
