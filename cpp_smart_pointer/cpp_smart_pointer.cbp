@@ -32,18 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="auto_ptr.cpp" />
+		<Unit filename="auto_ptr.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="mutual_reference.cpp" />
 		<Unit filename="mutual_reference.h" />
 		<Unit filename="shared_ptr.cpp" />
 		<Unit filename="shared_ptr.h" />
+		<Unit filename="unique_ptr.cpp" />
+		<Unit filename="unique_ptr.h" />
 		<Unit filename="weak_ptr.cpp" />
 		<Unit filename="weak_ptr.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
-			<code_completion />
-			<envvars />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
