@@ -37,6 +37,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mutual_reference.cpp" />
 		<Unit filename="mutual_reference.h" />
+		<Unit filename="my_smart_ptr.cpp" />
+		<Unit filename="my_smart_ptr.h" />
 		<Unit filename="shared_ptr.cpp" />
 		<Unit filename="shared_ptr.h" />
 		<Unit filename="unique_ptr.cpp" />

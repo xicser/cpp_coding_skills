@@ -22,7 +22,7 @@ public:
         cout << "destruct Cat" << endl;
     }
 
-    void dogBarking(void) {
+    void catBarking(void) {
         cout << "Cat_Barking" << endl;
     }
 
@@ -53,7 +53,7 @@ public:
         cout << "destruct Mouse" << endl;
     }
 
-    void dogBarking(void) {
+    void mouseBarking(void) {
         cout << "Mouse_Barking" << endl;
     }
 

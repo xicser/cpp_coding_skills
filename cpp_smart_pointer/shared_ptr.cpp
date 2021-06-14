@@ -1,5 +1,5 @@
 /*
-auto_ptr和unique_prt由于具有局限性, 通常情况下已经弃用,
+auto_ptr和unique_prt由于具有局限性(独占性等), 通常情况下已经弃用,
 重点掌握shared_ptr
 */
 
@@ -46,7 +46,8 @@ void test_shared_ptr(void)
     cout << pDog1.use_count() << endl;      //1
     cout << pDog2.use_count() << endl;      //1
 
-    shared_ptr<Dog> pDog3 = pDog1;
+//    shared_ptr<Dog> pDog3 = pDog1;
+    shared_ptr<Dog> pDog3(pDog1);
 
     cout << pDog1.use_count() << endl;      //2
     cout << pDog2.use_count() << endl;      //1

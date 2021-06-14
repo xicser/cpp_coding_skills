@@ -47,16 +47,17 @@
 	"weak_ptr.h"
 	<memory>
 
-1623593636 source:g:\code\cpp_coding_skills\cpp_smart_pointer\main.cpp
+1623639965 source:g:\code\cpp_coding_skills\cpp_smart_pointer\main.cpp
 	"shared_ptr.h"
 	"mutual_reference.h"
 	"weak_ptr.h"
 	"auto_ptr.h"
 	"unique_ptr.h"
+	"my_smart_ptr.h"
 
 1622531978 g:\code\cpp_coding_skills\cpp_smart_pointer\shared_ptr.h
 
-1622531978 g:\code\cpp_coding_skills\cpp_smart_pointer\mutual_reference.h
+1623634936 g:\code\cpp_coding_skills\cpp_smart_pointer\mutual_reference.h
 	<memory>
 	<iostream>
 
@@ -68,7 +69,7 @@
 	<memory>
 	"mutual_reference.h"
 
-1622531978 source:g:\code\cpp_coding_skills\cpp_smart_pointer\shared_ptr.cpp
+1623639954 source:g:\code\cpp_coding_skills\cpp_smart_pointer\shared_ptr.cpp
 	<iostream>
 	<memory>
 	"shared_ptr.h"
@@ -88,4 +89,9 @@
 1623591526 g:\code\cpp_coding_skills\cpp_smart_pointer\auto_ptr.h
 
 1623593609 g:\code\cpp_coding_skills\cpp_smart_pointer\unique_ptr.h
+
+1623640339 source:g:\code\cpp_coding_skills\cpp_smart_pointer\my_smart_ptr.cpp
+	<iostream>
+
+1623636631 g:\code\cpp_coding_skills\cpp_smart_pointer\my_smart_ptr.h
 
