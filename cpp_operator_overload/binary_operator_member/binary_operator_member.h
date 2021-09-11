@@ -12,7 +12,7 @@ public:
 
     void display();
 
-    Complex operator+ (Complex c2);     //重载加法运算符
+    Complex operator+ (const Complex &c2);     //重载加法运算符
 };
 
 #endif // __BINARY_OPERATOR_MEMBER_H__

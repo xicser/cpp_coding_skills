@@ -12,7 +12,7 @@ public:
 
     void display();
 
-    friend Complex operator+ (Complex c1, Complex c2);     //重载加法运算符
+    friend Complex operator+(const Complex &c1, const Complex &c2);     //重载加法运算符
 };
 
 

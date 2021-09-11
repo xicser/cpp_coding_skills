@@ -16,7 +16,7 @@ public:
 
 class A {
 
-    B b;
+    B b;        //B()
 public:
     A() {
         cout << "A()" << endl;
@@ -40,19 +40,21 @@ void func(A a)
 /*
 
 分析方法：
-先搞清调用形式, 然后找对应的构造函数
+先搞清调用形式, 然后找对应的构造函数！
 
 */
 int main()
 {
 //    A a1;               //A()
-////    A a2(2);          //A(2)
+//    A a2(2);          //A(2)
 //
 //    A *a3 = new A;      //A()
 //    A *a4 = new A();    //A()
-//
-//    func(A());          //A()
 
+
+
+//    func(A());          //A()
+//
     A a5(1.2);
 
     return 0;

@@ -21,7 +21,7 @@ void Complex::display()
 }
 
 //重载加法运算符
-Complex Complex::operator+(Complex c2)
+Complex Complex::operator+(const Complex &c2)
 {
     Complex c;
     c.real = this->real + c2.real;

@@ -15,6 +15,14 @@ public:
         cout << "ClassBase(const ClassBase &obj)" << endl;
     }
 
+    int getNum(void) const {
+        return num;
+    }
+
+    void setNum(int num) {
+        this->num = num;
+    }
+
 private:
     int num;
 };
@@ -23,6 +31,7 @@ class ClassA : public ClassBase
 {
 public:
     ClassA () {
+        m_pszName = nullptr;
     }
     ClassA (int id, const char* name)
     {
@@ -39,7 +48,7 @@ public:
         // 新建 heap 空间
         m_pszName = new char[strlen(obj.m_pszName) + 1];
         // 拷贝 heap 空间的内容
-        if (m_pszName != NULL)
+        if (m_pszName != nullptr)
         {
             strcpy(m_pszName, obj.m_pszName);
         }
@@ -54,9 +63,10 @@ public:
     ClassA & operator= (const ClassA &obj)
     {
         // 释放heap内存
-        if (m_pszName != NULL)
+        if (m_pszName != nullptr)
         {
             delete m_pszName;
+            m_pszName = nullptr;
         }
         // 赋值stack内存的值
         this->m_nId = obj.m_nId;
@@ -65,9 +75,8 @@ public:
         m_pszName = new char[nLength + 1];
         strcpy(m_pszName, obj.m_pszName);
 
-        //针对父类的处理
-//        this->num = ;
-
+        //针对父类成员变量的深拷贝处理
+        setNum(obj.getNum());
 
         return *this;
     }
@@ -77,27 +86,18 @@ public:
     int m_nId;
 };
 
-const ClassA & test(void)
-{
-    ClassA *retA = new ClassA(3, "kernel");
-    return *retA;
-}
-
 int main()
 {
     ClassA obj1(1, "liitdar");
     ClassA obj2;
     ClassA obj3(2, "wangxi");
+    obj3.setNum(15);
     ClassA obj4(obj3);
 
     cout << obj4.m_pszName << endl;
+    cout << obj4.getNum() << endl;
 
-    const ClassA &tempA = test();
-    cout << tempA.m_pszName << endl;
-
-    obj3
-    = obj2
-    = obj1; //obj3 = obj2.operator=(obj1);
+    obj3 = obj2 = obj1; //obj3 = obj2.operator=(obj1);
 
     cout << obj3.m_pszName << endl;
     cout << obj2.m_pszName << endl;

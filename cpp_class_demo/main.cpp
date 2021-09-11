@@ -1,8 +1,7 @@
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
-
-
 
 class Base
 {
@@ -86,16 +85,15 @@ void test(Test ts)
 int main(int argc, char *argv[])
 {
 //    Base b1;
-
-//    BaseChild b2;
+//    BaseChild b2(14);
+//
+//    cout << b2.get_val() << endl;
+//    cout << b2.getval() << endl;
 
 //    Base *b3 = new Base(123);
-//
 //    BaseChild *b4 = new BaseChild(123);
-
 //    test(Test());
-
-//    Test t1;
+    Test t1;
 
 
     return 0;
