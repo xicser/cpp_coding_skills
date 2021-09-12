@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1608908460 source:f:\code\data_structure_and_algorithm_misc\cpp_object_assign_and_copy\main.cpp
-	<iostream>
-	<string.h>
-
-1631347688 source:i:\code\cpp_coding_skills\cpp_object_assign_and_copy\main.cpp
-	<iostream>
-	<string.h>
-
