@@ -3,7 +3,8 @@
 using namespace std;
 
 class Base {
-
+public:
+    virtual ~Base() {}
 };
 
 class Derived : public Base {
@@ -47,20 +48,66 @@ void static_cast_test(void)
     }
 }
 
+/*  dynamic_cast主要用于类层次间的上行转换和下行转换
+    基类中必须有虚函数
+ */
 void dynamic_cast_test(void)
 {
-//    Base *bp = new Base();
-//    if(Derived *dp = dynamic_cast<Derived *>(bp)){
-//      //使用dp指向的Derived对象
-//    }
-//    else{
-//      //使用bp指向的Base对象
-//    }
+    Base *bp = new Base();
+    if (Derived *dp = dynamic_cast<Derived *>(bp)){
+      //使用dp指向的Derived对象
+    }
+    else {
+      //使用bp指向的Base对象
+    }
+}
+void f(const Base &b)
+{
+    try {
+        const Derived &d = dynamic_cast<const Derived &>(b);
+        //使用b引用的Derived对象
+    }
+    catch (std::bad_cast){
+        //处理类型转换失败的情况
+    }
 }
 
+/*
+const_cast, 用于修改类型的const或volatile属性
+①常量指针被转化成非常量的指针，并且仍然指向原来的对象；
+②常量引用被转换成非常量的引用，并且仍然指向原来的对象；
+*/
+void const_cast_test(void)
+{
+    const int g = 20;
+    int *h1 = const_cast<int*>(&g);      //去掉const常量const属性
 
+    const int g1 = 20;
+    int &h2 = const_cast<int &>(g1);     //去掉const引用const属性
 
+    const char *g2 = "hello";
+    char *h3 = const_cast<char *>(g2);   //去掉const指针const属性
+}
 
+/*
+reinterpret_cast, 它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针
+*/
+int output(int p)
+{
+    cout << p <<endl;
+    return 0;
+}
+
+typedef int (*test_func)(int );//定义函数指针test_func
+int reinterpret_cast_test()
+{
+    int p = 10;
+    test_func fun1 = output;
+    fun1(p);//正确
+    test_func fun2 = reinterpret_cast<test_func>(&p);
+    fun2(p);//...处有未经处理的异常: 0xC0000005: Access violation
+    return 0;
+}
 
 int main()
 {
