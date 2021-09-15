@@ -1,15 +1,14 @@
 #include <iostream>
 #include <thread>
 
+using namespace std;
+
 /*
 总结:
 1, 若传递int这种简单类型参数，建议都是值传递,不要用引用。防止节外生枝。
 2, 如果传递类对象，避免隐式类型转换。全部都在创建线程这一行就构建出临时对象来，然后在函数参数里，用引用来接, 如果不用引用, 还会拷贝构造对象, 浪费
 3, 建议用join()
 */
-
-
-using namespace std;
 
 //void print1(const int &i, char *p)
 //void print1(const int i, char *p)
@@ -33,16 +32,28 @@ void test1()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 class A {
 public:
     A(int a) : m_i(a)  {
-        cout << "构造函数" << endl;
+        cout << "构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
     }
     A(const A &a) : m_i(a.m_i) {
-        cout << "拷贝构造函数" << endl;
+        cout << "拷贝构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
     }
     ~A() {
-        cout << "析构函数" << endl;
+//        cout << "析构函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
     }
 
 private:
@@ -51,24 +62,77 @@ private:
 
 void print2(int i, const A &a)
 {
-    cout << &a << endl;
+    cout << "print2 : " << &a << " thread_id = " << this_thread::get_id() << endl;
 }
 
 void test2()
 {
+    cout << "主thread_id = " << this_thread::get_id() << endl;
+
     int var = 1;
-    thread threadObj(print2, var, A(12));  //这是一个肯定的正确的写法
+    int aParam = 12;
+    thread threadObj(print2, var, A(aParam));  //这是一个肯定的正确的写法, 在主线程执行结束之前(aParam未释放之前), 对象A已经构建完毕
 //    threadObj.join();
     threadObj.detach();
 
-    cout << "Hello world !" << endl;
+    cout << endl << "Hello world !" << endl << endl;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+class B {
+public:
+    B(int a) : m_i(a)  {
+        cout << "构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+    B(const B &a) : m_i(a.m_i) {
+        cout << "拷贝构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+    ~B() {
+//        cout << "析构函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+
+    void setVal(int val) {
+        this->m_i = val;
+    }
+    int getVal(void) {
+        return this->m_i;
+    }
+
+private:
+    int m_i;
+};
+
+void print3(B &b)
+{
+    b.setVal(199);
+}
+void test3()
+{
+    B obj(10);
+    printf("%d\n", obj.getVal());
+    thread threadObj(print3, ref(obj));         //print3中对obj的修改, 相当于修改本函数里的obj
+    threadObj.join();
+    printf("%d", obj.getVal());
+}
+
+
 
 
 int main()
 {
 //    test1();
-    test2();
+//    test2();
+    test3();
 
     return 0;
 }
