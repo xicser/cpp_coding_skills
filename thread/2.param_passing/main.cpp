@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+#include <memory>
 
 using namespace std;
 
@@ -88,7 +89,7 @@ void test2()
 
 
 
-
+/* ref */
 class B {
 public:
     B(int a) : m_i(a)  {
@@ -98,7 +99,7 @@ public:
         cout << "拷贝构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
     }
     ~B() {
-//        cout << "析构函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+        cout << "析构函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
     }
 
     void setVal(int val) {
@@ -121,9 +122,104 @@ void test3()
     B obj(10);
     printf("%d\n", obj.getVal());
     thread threadObj(print3, ref(obj));         //print3中对obj的修改, 相当于修改本函数里的obj
-    threadObj.join();
+    threadObj.join();                           //不调用拷贝构造函数, 那么后续如果调用detach就不安全了
     printf("%d", obj.getVal());
 }
+
+
+
+
+
+
+
+
+
+
+
+/* 智能指针 */
+void print4(shared_ptr<B> iptr)
+{
+    cout << "print4 " << iptr.use_count() << endl;
+}
+void test4()
+{
+    shared_ptr<B> iptr(new B(21));
+    thread threadObj(print4, iptr);
+    threadObj.join();
+//    threadObj.detach();
+
+    cout << "test4 " << iptr.use_count() << endl;
+}
+
+
+
+
+
+
+
+
+/* 类的任意成员函数做线程函数 */
+class C {
+public:
+    C(int a) : m_i(a)  {
+        cout << "构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+    C(const C &a) : m_i(a.m_i) {
+        cout << "拷贝构造函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+    ~C() {
+        cout << "析构函数" << " " << this << " " << "thread_id = " << this_thread::get_id() << endl;
+    }
+
+    void setVal(int val) {
+        this->m_i = val;
+    }
+    int getVal(void) {
+        return this->m_i;
+    }
+
+    void thread_work(int num) {
+        cout << "thread_work " << num << endl;
+    }
+
+    void operator()(int num)
+    {
+        cout << "1m_i = " << m_i << endl;
+        cout << "2m_i = " << m_i << endl;
+        cout << "3m_i = " << m_i << endl;
+        cout << "4m_i = " << m_i << endl;
+        cout << "5m_i = " << m_i << endl;
+        cout << "6m_i = " << m_i << endl;
+        cout << "7m_i = " << m_i << endl;
+        cout << "8m_i = " << m_i << endl;
+    }
+
+private:
+    int m_i;
+};
+void test5()
+{
+    C obj(43);
+//    thread mythread(&C::thread_work, obj, 1234);
+//    mythread.join();
+
+    thread mythread(obj, 15);
+    mythread.join();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,7 +228,10 @@ int main()
 {
 //    test1();
 //    test2();
-    test3();
+//    test3();
+//    test4();
+
+    test5();
 
     return 0;
 }
