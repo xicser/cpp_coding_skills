@@ -26,6 +26,7 @@ public:
 
     //重载赋值运算符
     SharedPtr<T> operator=(const SharedPtr<T> &other) {
+        //保证不是自己和自己赋值
         if (this != &other) {
             this->release();            //释放原来管理的对象
             ptr = other.ptr;
@@ -53,7 +54,7 @@ public:
 
 private:
     T *ptr;                  //指向管理的对象
-    int *countRef;  //引用计数
+    int *countRef;           //引用计数
 
     void release() {
         (*countRef)--;

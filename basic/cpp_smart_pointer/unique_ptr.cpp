@@ -37,6 +37,7 @@ private:
 
 void test_unique_ptr(void)
 {
+    //unique_ptr对象始终是关联的原始指针的唯一所有者
     unique_ptr<Monkey> mptr1(new Monkey(10, 20));
 
     //不能拷贝构造
@@ -50,8 +51,9 @@ void test_unique_ptr(void)
 //    unique_ptr<Monkey> mptr4(new Monkey[3]); //崩溃
 
     //可以替换所有权
-    unique_ptr<Monkey> mptr5 = move(mptr1); //替换所有权
-    mptr1.release();                        //释放所有权
+    unique_ptr<Monkey> mptr5 = std::move(mptr1); //替换所有权(移动构造函数)
+    //在unique_ptr对象上调用release()将释放其关联的原始指针的所有权，并返回原始指针
+    mptr1.release();
 
     mptr5->monkeyBarking();
 }

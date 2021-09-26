@@ -1,3 +1,7 @@
+/*
+auto_ptr已弃用
+*/
+
 #include <iostream>
 #include <memory>
 
@@ -52,5 +56,5 @@ void test_auto_ptr(void)
 
 
     //只能管理一个对象, 不能管理对象数组
-//    auto_ptr<Tiger> tptr4(new Tiger[3]); //崩溃
+    auto_ptr<Tiger> tptr4(new Tiger[3] {Tiger(12, 23), Tiger(23, 34), Tiger(45, 56)}); //崩溃
 }

@@ -1,6 +1,7 @@
 #include "weak_ptr.h"
 #include <memory>
 
+//weak_ptr设计之初就是为了服务于shared_ptr的，所以不增加引用计数就是它的核心功能。
 void test_weak_ptr(void)
 {
     shared_ptr<AA> aptr = make_shared<AA>();
