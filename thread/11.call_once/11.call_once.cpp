@@ -4,7 +4,8 @@
 
 using namespace std;
 
-static mutex mutexInstance;
+
+static std::once_flag gFlag;
 
 /* 单例类 */
 class Configuration {
@@ -17,23 +18,17 @@ private:
     Configuration() {
         cout << "构造" << endl;
     }
-
     static Configuration* instance;
 
 public:
     static Configuration* getInstance() {
 
-        // 如果没有mutex
-        // a)如果if (m_instance != NULL)条件成立, 则肯定表示m_instance已经被new过了; 
-        // b)如果if (m_instance == NULL), 不代表m_instance一定没被new过;
-
-        // 双重锁定(双重检查), 提高性能, 不用每次都lock
-        if (instance == nullptr) {
-            unique_lock<mutex> uMutex(mutexInstance);  //自动加锁
+        //只会被执行一次
+        std::call_once(gFlag, []() {
             if (instance == nullptr) {
                 instance = new Configuration();
             }
-        }
+        });
 
         return instance;
     }
