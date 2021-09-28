@@ -15,7 +15,7 @@ public:
             cout << "生成一个数据！ " << i << " ";
             unique_lock<mutex> ulock(mux);
             msgQueue.push_back(i);
-            condition.notify_one();             //尝试唤醒condition.wait()的线程(有可能现在没有线程在wait, 那么这句就没有效果)
+            condition.notify_all();   //尝试唤醒condition.wait()的所有线程(有可能现在没有线程在wait, 那么这句就没有效果)
             ulock.unlock();
         }
     }
@@ -36,7 +36,7 @@ public:
 
                 当其他线程用notify_one()将本wait(原来是睡着/堵塞)的状态唤醒后，wait就开始恢复干活了，恢复后wait干什么活?
                 a) wait()不断的尝试重新获取互斥量锁，如果获取不到，那么流程就卡在wait这里等着获取，如果获取到了锁，那么wait就继续执行b
-                b) 
+                b)
                     b.1) 如果wait有第二个参数(lambda)，就判断这个lambda表达式，如果lambda表达式为false, 那么wait()将解锁互斥量，并堵塞到本行
                     b.2) 如果lambda表达式为true，则wait返回，代码流程继续往下走
                     b.3) 如果wait没有第二个参数，则wait返回，代码流程继续往下走
@@ -50,7 +50,7 @@ public:
                 else {
                     return false;  //消息队列中没有数据
                 }
-            });
+                });
 
             int data = msgQueue.front();
             msgQueue.pop_front();
@@ -77,10 +77,12 @@ void test3()
     Test t;
 
     thread thdOut(&Test::sendMsgToQueue, ref(t));
-    thread thdIn(&Test::getMsgFromQueue, ref(t));
+    thread thdIn1(&Test::getMsgFromQueue, ref(t));
+    thread thdIn2(&Test::getMsgFromQueue, ref(t));
 
     thdOut.join();
-    thdIn.join();
+    thdIn1.join();
+    thdIn2.join();
 }
 
 int main()
