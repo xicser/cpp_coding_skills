@@ -44,11 +44,12 @@ public:
 
             unique_lock<mutex> ulock(mux);   //加锁
             condition.wait(ulock, [this] {
+                //处理一下虚假唤醒
                 if (msgQueue.empty() == false) {
                     return true;   //消息队列中有数据
                 }
                 else {
-                    return false;  //消息队列中没有数据
+                    return false;  //消息队列中没有数据（虚假唤醒）
                 }
             });
 

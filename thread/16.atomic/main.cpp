@@ -38,5 +38,13 @@ int main()
 
     cout << cnt << endl;
 
+    auto cnt2(cnt.load());   //以原子方式读
+
+    cout << ++cnt2 << endl;
+
+//    cnt2.store(12);
+//    cout << cnt2 << endl;
+
+
     return 0;
 }
