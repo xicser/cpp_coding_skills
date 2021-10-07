@@ -41,8 +41,8 @@ void ThreadPool::threadGetCmd(void)
     while (true) {
         string cmd = "abc";
         //getline(cin, cmd, '\n');
-        std::chrono::milliseconds dura(10);
-        std::this_thread::sleep_for(dura);
+        //std::chrono::milliseconds dura(2);
+        //std::this_thread::sleep_for(dura);
 
         muxCmd.lock();
         cmdQueue.push_back(cmd);
@@ -67,8 +67,9 @@ void ThreadPool::threadGetCmd(void)
 /* 线程池扩容 */
 void ThreadPool::poolExpansion(void)
 {
+    int sizeTmp = threadsInfo.size();
     //给线程池当中每次增加5个线程
-    for (int i = 0; i < 5; i++) {
+    for (int i = sizeTmp; i < sizeTmp + 5; i++) {
         ThreadInfo_t threadi;
         threadi.id = i;
         threadi.pThreadObj = new thread(&ThreadPool::threadEntrance, ref(*this), threadi.id);
@@ -100,7 +101,7 @@ void ThreadPool::threadEntrance(int threadId)
         ulock.unlock();
 
         //处理
-        std::chrono::milliseconds dura(2000);
+        std::chrono::milliseconds dura(20000);
         std::this_thread::sleep_for(dura);
         cout << "线程" << threadId << "处理完成" << ", 命令为" << cmd << endl;
 
