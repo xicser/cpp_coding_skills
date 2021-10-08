@@ -39,22 +39,25 @@ ThreadPool::~ThreadPool()
 void ThreadPool::threadGetCmd(void)
 {
     while (true) {
+
+        //产生一条命令
         string cmd = "abc";
-        //getline(cin, cmd, '\n');
-        //std::chrono::milliseconds dura(2);
-        //std::this_thread::sleep_for(dura);
+        std::chrono::milliseconds dura(2);
+        std::this_thread::sleep_for(dura);
 
         muxCmd.lock();
         cmdQueue.push_back(cmd);
 
         //看看现在有没有可用线程
-        if (this->threadAvailable > 0) {
+        muxAvailable.lock();
+        if (this->threadAvailable > 5) {
+            muxAvailable.unlock();
 
-            //可用线程减1
-            this->threadAvailable--;
             condition.notify_all();
         }
         else {
+            muxAvailable.unlock();
+
             //线程池扩容
             cout << "线程池容量紧张！" << endl;
             poolExpansion();
@@ -76,6 +79,11 @@ void ThreadPool::poolExpansion(void)
 
         threadsInfo.push_back(threadi);
         this->poolSize++;
+
+        //可用线程加1
+        muxAvailable.lock();
+        this->threadAvailable++;
+        muxAvailable.unlock();
     }
 }
 
@@ -100,12 +108,19 @@ void ThreadPool::threadEntrance(int threadId)
         cmdQueue.pop_front();
         ulock.unlock();
 
+        //可用线程减1
+        muxAvailable.lock();
+        this->threadAvailable--;
+        muxAvailable.unlock();
+
         //处理
-        std::chrono::milliseconds dura(20000);
+        std::chrono::milliseconds dura(2000);
         std::this_thread::sleep_for(dura);
         cout << "线程" << threadId << "处理完成" << ", 命令为" << cmd << endl;
 
-        //可用线程减1
+        //可用线程加1
+        muxAvailable.lock();
         this->threadAvailable++;
+        muxAvailable.unlock();
     }
 }

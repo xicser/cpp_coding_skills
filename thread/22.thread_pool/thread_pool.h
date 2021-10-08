@@ -26,8 +26,10 @@ private:
     condition_variable condition;           //条件变量
     list<string> cmdQueue;                  //命令队列
 
+    mutex muxAvailable;                     //互斥量(保护可用线程数量)
+    int threadAvailable;                    //可用线程数量
+
     int poolSize;                           //线程池大小
-    atomic<int> threadAvailable;            //可用线程数量
     vector<ThreadInfo_t> threadsInfo;       //存储线程信息
     thread* pThreadInObj;                   //输入线程对象指针
 
