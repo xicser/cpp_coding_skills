@@ -45,7 +45,7 @@ void testFuncTemplate(void)
     cout << "i1 = " << i1 << ", i2 = " << i2 << endl;
     cout << "d1 = " << d1 << ", d2 = " << d2 << endl;
 
-    mySwap(c1, c2);
+    mySwap<char>(c1, c2);  //显式指定
     mySwap(i1, i2);
     mySwap(d1, d2);
 
