@@ -15,15 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="thread_pool.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="thread_pool_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="thread_pool.h">
+    <ClInclude Include="thread_pool.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
