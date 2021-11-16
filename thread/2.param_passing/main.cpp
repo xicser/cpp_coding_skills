@@ -184,6 +184,7 @@ public:
 
     void operator()(int num)
     {
+        cout << "num = " << num << endl;
         cout << "1m_i = " << m_i << endl;
         cout << "2m_i = " << m_i << endl;
         cout << "3m_i = " << m_i << endl;
