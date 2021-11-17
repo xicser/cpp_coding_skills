@@ -29,27 +29,30 @@ public:
     //把收到的消息, 存放到一个队列的线程
     void inMsgRecvQueue() {
         for (int i = 0; i < 1000; i++) {
-
-            unique_lock<mutex> g1(mux, try_to_lock);
-            //如果拿到锁了
-            if (g1.owns_lock() == true) {
-                msgRecvQueue.push_back(i);
-                cout << "生成数据！";
-            }
-            else {
-                cout << "只能干点别的事";
-            }
+            put(i);
         }
     }
+    void put(int i) {
+        unique_lock<mutex> g1(mux, std::try_to_lock);
+        //如果拿到锁了
+        if (g1.owns_lock() == true) {
+            msgRecvQueue.push_back(i);
+            cout << "生成数据！";
+        }
+        else {
+            cout << "只能干点别的事";
+        }
+    }
+
+
 
     //把数据从消息队列取出的线程
     void outMsgRecvQueue() {
         for (int i = 0; i < 1000; i++) {
-            recvProc();
+            get();
         }
     }
-
-    void recvProc(void) {
+    void get() {
         mux.lock();
         unique_lock<mutex> g1(mux, adopt_lock);
         if (msgRecvQueue.empty() == false) {

@@ -14,7 +14,7 @@ public:
         for (int i = 0; i < 100000; i++) {
             {
                 lock_guard<mutex> sbguard(mux);
-                msgRecvQueue.push_back(i);            
+                msgRecvQueue.push_back(i);
             }
         }
     }
