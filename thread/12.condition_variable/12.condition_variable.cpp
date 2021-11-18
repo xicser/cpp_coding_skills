@@ -10,12 +10,12 @@ class Test {
 public:
     //存放消息
     void sendMsgToQueue() {
-        for (int i = 1; i <= 1000; i++) {
-
-            cout << "生成一个数据！ " << i << " ";
+        for (int i = 0; i < 1000; i++) {
             unique_lock<mutex> ulock(mux);
+            cout << "生成一个数据！ " << i << " ";
             msgQueue.push_back(i);
-            condition.notify_one();             //尝试唤醒condition.wait()的线程(有可能现在没有线程在wait, 那么这句就没有效果)
+            condition.notify_one(); //尝试唤醒condition.wait()的线程(有可能现在没有线程在wait, 那么这句就没有效果)
+                                    //在unlock前通知, 确保通知的时候, 消息队列中一定有数据
             ulock.unlock();
         }
     }
@@ -57,7 +57,6 @@ public:
             msgQueue.pop_front();
             ulock.unlock();
 
-
             cout << "消费一个数据！ " << data << " ";
             consumeCnt++;
 
@@ -69,7 +68,7 @@ public:
     }
 
 private:
-    list<int> msgQueue;
+    list<int> msgQueue;             // 消息队列
     mutex mux;                      // 互斥量
     condition_variable condition;   // 条件变量
 };

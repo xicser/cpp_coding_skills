@@ -7,7 +7,7 @@
 using namespace std;
 
 /* 有读有写
-defer_lock
+1, defer_lock
 用这个defer_lock的前提是你不能自己先lock，否则会报异常。
 defer_lock的意思就是并没有给mutext加锁: 初始化了一个没有加锁的mutex
 需要用unique_lock的成员函数lock来加锁
@@ -15,17 +15,17 @@ defer_lock的意思就是并没有给mutext加锁: 初始化了一个没有加�
 
 
 
-unique_lock的成员函数:
+2, unique_lock的成员函数:
 (3.1) lock(), 加锁;
 (3.2) unlock(),解锁;
 (3.3) try_lock(), 尝试给互斥量加锁，如果拿不到锁，则返回false, 如果拿到了锁，返回true，这个函数不阻塞的;
 (3.4) release(), 返回它所管理的mutex对象指针，并释放所有权; 也就是说，这个unique_lock和mutext不再有关系。
-严格区分unlock()和release(的区别, 不要混淆。如果原来mutex对象处于加锁状态, 你有责任接管过来并负责解锁。
+严格区分unlock()和release()的区别, 不要混淆。如果原来mutex对象处于加锁状态, 你有责任接管过来并负责解锁。
 
 
 
 
-unique_lock所有权的传递mutex,
+3, unique_lock所有权的传递:
 std::unique_lock<std ::mutex> sbguard1(my_mutex1);
 sbguard1拥有my_mutex1的所有权
 sbguard1可以把自己对mutex(my_mutex1)的所有权转移给其他的unique_lock对象;
@@ -34,20 +34,10 @@ sbguard1可以把自己对mutex(my_mutex1)的所有权转移给其他的unique_l
 转移:
 std::unique_lock<std ::mutex> sbguard2(move(sbguard1)); //现在sbguard1指向空，sbguard2指向了mutex
 
-
-
-
 */
+
 class Test {
 public:
-
-    // 暂略... ... 太尼玛复杂了, 什么移动构造函数？
-    unique_lock<mutex> getUniqueLock() {
-        unique_lock<mutex> tmpGuard(mux);
-        return tmpGuard;
-    }
-
-
     //把收到的消息, 存放到一个队列的线程
     void inMsgRecvQueue() {
         for (int i = 0; i < 1000; i++) {
@@ -55,7 +45,7 @@ public:
         }
     }
     void inRecvProc(int i) {
-        unique_lock<mutex> g1(mux, defer_lock);  //没有加锁的mutex, 相当于把mutex和unique_lock绑定在一起
+        unique_lock<mutex> g1(mux, defer_lock);  //没有加锁的mutex, 相当于把mutex和unique_lock绑定(关联)在一起
         g1.lock();    //不用自己unlock, 出了作用域, 析构的时候会自动unlock
 
         msgRecvQueue.push_back(i);

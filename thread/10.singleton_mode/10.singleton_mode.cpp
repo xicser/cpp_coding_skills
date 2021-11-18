@@ -24,8 +24,8 @@ public:
     static Configuration* getInstance() {
 
         // 如果没有mutex
-        // a)如果if (m_instance != NULL)条件成立, 则肯定表示m_instance已经被new过了; 
-        // b)如果if (m_instance == NULL), 不代表m_instance一定没被new过;
+        // a)如果if (instance != NULL)条件成立, 则肯定表示instance已经被new过了; 
+        // b)如果if (instance == NULL), 不代表instance一定没被new过;
 
         // 双重锁定(双重检查), 提高性能, 不用每次都lock
         if (instance == nullptr) {
@@ -60,7 +60,7 @@ public:
 };
 
 // 用于释放new出来的内存
-// 全局变量, 生命周期是整个程序, 当程序执行结束时, 会被释放, 这时会调用析构函数
+// 全局变量, 生命周期是整个程序, 当程序执行结束时, 会被释放, 这时会调用析构函数, 然后在析构函数里释放Configuration类实例
 static Recycle recycle;
 
 
