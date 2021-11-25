@@ -42,8 +42,6 @@ public:
 
         return param * 10;
     }
-
-
 };
 
 void test2()
