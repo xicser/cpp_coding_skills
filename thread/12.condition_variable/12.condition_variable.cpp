@@ -16,6 +16,9 @@ public:
             msgQueue.push_back(i);
             condition.notify_one(); //尝试唤醒condition.wait()的线程(有可能现在没有线程在wait, 那么这句就没有效果)
                                     //在unlock前通知, 确保通知的时候, 消息队列中一定有数据
+
+            //尝试唤醒condition.wait()的所有线程(有可能现在没有线程在wait, 那么这句就没有效果)
+            //condition.notify_all();
             ulock.unlock();
         }
     }

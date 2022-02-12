@@ -23,11 +23,16 @@ private:
 public:
     static Configuration* getInstance() {
 
-        // 如果没有mutex
-        // a)如果if (instance != NULL)条件成立, 则肯定表示instance已经被new过了; 
-        // b)如果if (instance == NULL), 不代表instance一定没被new过;
+        //naive的做法
+        //unique_lock<mutex> uMutex(mutexInstance);  //自动加锁
+        //if (instance == nullptr) {
+        //    instance = new Configuration();
+        //}
 
         // 双重锁定(双重检查), 提高性能, 不用每次都lock
+        // 如果没有mutex
+        // a)如果if (instance != nullptr)条件成立, 则肯定表示instance已经被new过了; 
+        // b)如果if (instance == nullptr), 不代表instance一定没被new过;
         if (instance == nullptr) {
             unique_lock<mutex> uMutex(mutexInstance);  //自动加锁
             if (instance == nullptr) {
@@ -54,7 +59,6 @@ public:
         Configuration* instancePtr = Configuration::getInstancePtr();
         if (instancePtr != nullptr) {
             delete instancePtr;
-            Configuration::clearInstancePtr();
         }
     }
 };
