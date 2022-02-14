@@ -43,7 +43,7 @@ private:
     list<int> msgRecvQueue;
     mutex mux;      //互斥量
 };
-void test3()
+void test1()
 {
     Test t;
 
@@ -56,5 +56,5 @@ void test3()
 
 int main()
 {
-    test3();
+    test1();
 }

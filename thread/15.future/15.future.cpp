@@ -33,6 +33,7 @@ void test1()
     case std::future_status::deferred:
         //这么创建
         //std::future<int> result = std::async(std::launch::deferred, threadEntrance);
+        //result.wait_for直接不等待, 立即走到这个case
         cout << "deferred..." << endl;
         //调用get才会执行, 实际上, 并没有创建子线程, 而是把子线程的代码插在这里执行了
         //从执行流程上讲(串行执行的), 这么做是可以的
@@ -100,6 +101,6 @@ void test2()
 
 int main()
 {
-    test1();
-    //test2();
+    //test1();
+    test2();
 }
