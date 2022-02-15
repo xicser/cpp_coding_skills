@@ -12,6 +12,7 @@ private:
 
 public:
     Counter() {
+        this->v = 0;
     }
     Counter(int v) {
         this->v = v;
@@ -24,7 +25,12 @@ public:
     }
 
     //后缀运算
-    Counter operator++(int) {
+    /**
+const的作用:它与内置类型为不致；你法活得你所期望的结果，因为第次返回的是旧值，不是原对象，你调两次后
+置++，结果只累加了次，所以我们必须动禁其合法化，就要在前加上const。
+内置类型不允许i++++; 这种貌似想要加两次的写法
+    */
+    const Counter operator++(int) {
         Counter t;
         t.v = v++;
         return t;
@@ -104,7 +110,12 @@ void test2()
 int main()
 {
     // test1();
-    test2();
+//    test2();
+//    int i = 0;
+//    i++++;
+//    Counter cnt(3);
+//    cnt++++;
+//    cnt.display();
 
     return 0;
 }
