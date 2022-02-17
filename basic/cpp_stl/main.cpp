@@ -20,16 +20,16 @@ using namespace std;
 
 int main()
 {
-    vectorDemo();
-    setDemo();
-   // stringDemo();
-    mapDemo();
-    queueDemo();
-    prior_queueDemo();
-    stackDemo();
-    pairDemo();
-    algorithmDemo();
-
+   // vectorDemo();
+   // setDemo();
+   //// stringDemo();
+   // mapDemo();
+   // queueDemo();
+   // prior_queueDemo();
+   // stackDemo();
+   // pairDemo();
+   // algorithmDemo();
+    resizeTest();
 
     return 0;
 }

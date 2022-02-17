@@ -1,5 +1,5 @@
 /*
-auto_ptr和unique_prt由于具有局限性(独占性等), 通常情况下已经弃用,
+auto_ptr和unique_prt由于具有局限性(独占性等), 其中auto_ptr已经弃用,
 重点掌握shared_ptr
 */
 

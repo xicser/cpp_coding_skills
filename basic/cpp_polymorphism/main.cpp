@@ -17,12 +17,13 @@ public:
 class Machine {
 
 public:
-    //基类当中声明一个纯虚函数, 表示抽象出来一个动作, 比如无人机和无人车都有的move
+    //基类当中声明一个虚函数, 表示抽象出来一个动作, 比如无人机和无人车都有的move
     virtual void move(Point p1, Point p2) {
         cout << "Machine move..." << endl;
     };
 
     //加virtual是防止内存泄漏, 继承时，要养成的一个好习惯就是，基类析构函数中，加上virtual
+    //不加virtual只会调用基类析构函数
     virtual ~Machine() {
         cout << "~Machine" << endl;
     }

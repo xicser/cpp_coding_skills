@@ -109,8 +109,9 @@ int reinterpret_cast_test()
     return 0;
 }
 
+int test();
 int main()
 {
-    cout << "Hello world!" << endl;
+    test();
     return 0;
 }

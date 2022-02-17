@@ -1,5 +1,16 @@
 /*
 vector就是一变长数组
+
+3、 resize()和reserve()
+resize()：改变当前容器内含有元素的数量(size())，⽽不是容器的容量
+1. 当resize(len)中len>v.capacity()，则数组中的size和capacity（是这样吗？代码验证下来不是这样的）均设置为len;
+2. 当resize(len)中len<=v.capacity()，则数组中的size设置为len，⽽capacity不变;
+
+reserve()：改变当前容器的最⼤容量（capacity）
+1. 如果reserve(len)的值 > 当前的capacity()，那么会重新分配⼀块能存len个对象的空间，然后把之前的对象通
+过copy construtor复制过来，销毁之前的内存;
+2. 当reserve(len)中len<=当前的capacity()，则数组中的capacity不变， size不变，即不对容器做任何改变。
+
 */
 
 #include <vector>
@@ -68,6 +79,30 @@ void vectorDemo(void)
     name1.erase(name1.begin());   //删除name1[0]
     for (vector<int>::iterator it = name1.begin(); it != name1.end(); it++) {
         printf("%d ", *it);
+    }
+    printf("\n");
+}
+
+void resizeTest()
+{
+    vector<int> arr;
+    for (int i = 1; i <= 10; i++) {
+        arr.push_back(i);
+    }
+    printf("cap = %d\n", arr.capacity());
+    printf("size = %d\n", arr.size());
+    for (int i = 0; i < arr.size(); i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    printf("\n");
+
+    arr.resize(15);
+
+    printf("cap = %d\n", arr.capacity());
+    printf("size = %d\n", arr.size());
+    for (int i = 0; i < arr.size(); i++) {
+        printf("%d ", arr[i]);
     }
     printf("\n");
 }
