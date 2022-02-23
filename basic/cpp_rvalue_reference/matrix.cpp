@@ -1,6 +1,6 @@
 ﻿/*
 听讲了半天没听到核心，上简书看了一下，左值引用和右值引用本质就是减少内存开销优化内存使用的一种方法，
-右值引用就是将那些产生的临时的变量或对象偷过来作为长生命周期的对象存在，
+提出右值引用的目的，就是将那些产生的临时的变量或对象偷过来作为长生命周期的对象存在，
 避免了不必要的多次的在内存中创建销毁，不过还是要说，有垃圾回收的语言真的牛b
 */
 
@@ -15,13 +15,13 @@ private:
 
 public:
     Matrix() {
-        printf("constructor\n");
+        printf("constructor()\n");
         row = 0;
         col = 0;
         matrix = nullptr;
     }
     Matrix(int _row, int _col) {
-        printf("constructor\n");
+        printf("constructor(int _row, int _col)\n");
 
         row = _row;
         col = _col;
@@ -84,10 +84,9 @@ public:
     //重载赋值运算符
     Matrix& operator= (const Matrix& obj) {
 
-        printf("assignment\n");
+        printf("assignment &\n");
 
         if (matrix != nullptr) {
-            printf("~release\n");
             for (int i = 0; i < row; i++) {
                 if (matrix[i] != nullptr) {
                     delete[] matrix[i];
@@ -111,24 +110,31 @@ public:
 
         return *this;
     }
+    
+    //重载赋值运算符（移动赋值）
+    Matrix& operator= (Matrix&& obj) {
 
-    //重载加法运算符 Matrix r = a + b; // r = a.operator+(b);
-    //Matrix operator+ (const Matrix& mat) {
-    //    if (mat.row != row || mat.col != col) {
-    //        printf("Error!\n");
-    //    }
+        printf("assignment &&\n");
 
-    //    Matrix result(row, col);
+        if (matrix != nullptr) {
+            for (int i = 0; i < row; i++) {
+                if (matrix[i] != nullptr) {
+                    delete[] matrix[i];
+                    matrix[i] = nullptr;
+                }
+            }
+            delete[] matrix;
+            matrix = nullptr;
+        }
 
-    //    for (int i = 0; i < row; i++) {
-    //        for (int j = 0; j < col; j++) {
-    //            result.matrix[i][j] = 
-    //                matrix[i][j] + mat.matrix[i][j];
-    //        }
-    //    }
+        //偷
+        this->row = obj.row;
+        this->col = obj.col;
+        this->matrix = obj.matrix;
+        obj.matrix = nullptr;
 
-    //    return result;
-    //}
+        return *this;
+    }
 
     //重载加法运算符
     friend Matrix operator+ (const Matrix& a, const Matrix& b) {
@@ -177,13 +183,14 @@ void testMatrix()
     Matrix c(3, 4);
     printf("\n");
 
-    Matrix r = a + b   + c;
+    //Matrix r = a + b   + c;
             // tmp_ab
 
 
-    //Matrix r;
+    Matrix r;
+    //r = Matrix(5, 6);
 
-    //r = Matrix();
+    r = a + b + c;
 
     printf("--------------------\n");
 }
