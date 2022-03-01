@@ -21,6 +21,7 @@ private:
     static Configuration* instance;
 
 public:
+    //懒汉式
     static Configuration* getInstance() {
 
         //naive的做法
