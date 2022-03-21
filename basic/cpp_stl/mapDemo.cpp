@@ -4,6 +4,32 @@
 
 using namespace std;
 
+
+class Person {
+private:
+    int age;
+    int grade;
+
+public:
+    Person(int age, int grade) {
+        this->age = age;
+        this->grade = grade;
+    }
+
+    int getAge() const {
+        return age;
+    }
+    int getGrade() const {
+        return grade;
+    }
+
+    /* 自定义key的排序规则 */
+    bool operator< (const Person& s) const
+    {
+        return this->getAge() < s.getAge();
+    }
+};
+
 void mapDemo(void)
 {
     printf("**************************map test****************************\n");
@@ -47,4 +73,8 @@ void mapDemo(void)
     for (map<char, int>::iterator it = mp.begin(); it != mp.end(); it++) {
         printf("%c %d\n", it->first, it->second);
     }
+
+    /* 自定义顺序 */
+    map<Person, int> aSet;
+
 }

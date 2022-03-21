@@ -21,7 +21,7 @@ using namespace std;
 int main()
 {
    // vectorDemo();
-   // setDemo();
+    setDemo();
    //// stringDemo();
    // mapDemo();
    // queueDemo();
@@ -29,7 +29,7 @@ int main()
    // stackDemo();
    // pairDemo();
    // algorithmDemo();
-    resizeTest();
+    //resizeTest();
 
     return 0;
 }

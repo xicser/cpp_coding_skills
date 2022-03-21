@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="algorithmDemo.cpp" />
+    <ClCompile Include="deque.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mapDemo.cpp" />
     <ClCompile Include="pairDemo.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithmDemo.h" />
+    <ClInclude Include="deque.h" />
     <ClInclude Include="mapDemo.h" />
     <ClInclude Include="pairDemo.h" />
     <ClInclude Include="prior_queueDemo.h" />
