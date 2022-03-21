@@ -3,5 +3,6 @@
 
 void vectorDemo(void);
 void resizeTest();
+void emplaceBackTest();
 
 #endif // __VECTOR_DEMO_H__

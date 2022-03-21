@@ -1,18 +1,19 @@
 /*
-vectorå°±æ˜¯ä¸€å˜é•¿æ•°ç»„
+vector¾ÍÊÇÒ»±ä³¤Êı×é
 
-3ã€ resize()å’Œreserve()
-resize()ï¼šæ”¹å˜å½“å‰å®¹å™¨å†…å«æœ‰å…ƒç´ çš„æ•°é‡(size())ï¼Œâ½½ä¸æ˜¯å®¹å™¨çš„å®¹é‡
-1. å½“resize(len)ä¸­len>v.capacity()ï¼Œåˆ™æ•°ç»„ä¸­çš„sizeå’Œcapacityï¼ˆæ˜¯è¿™æ ·å—ï¼Ÿä»£ç éªŒè¯ä¸‹æ¥ä¸æ˜¯è¿™æ ·çš„ï¼‰å‡è®¾ç½®ä¸ºlen;
-2. å½“resize(len)ä¸­len<=v.capacity()ï¼Œåˆ™æ•°ç»„ä¸­çš„sizeè®¾ç½®ä¸ºlenï¼Œâ½½capacityä¸å˜;
+3¡¢ resize() ºÍ reserve()
+resize()£º¸Ä±äµ±Ç°ÈİÆ÷ÄÚº¬ÓĞÔªËØµÄÊıÁ¿(size())£¬?²»ÊÇÈİÆ÷µÄÈİÁ¿
+1. µ±resize(len)ÖĞlen>v.capacity()£¬ÔòÊı×éÖĞµÄsizeºÍcapacity£¨ÊÇÕâÑùÂğ£¿´úÂëÑéÖ¤ÏÂÀ´²»ÊÇÕâÑùµÄ£©¾ùÉèÖÃÎªlen;
+2. µ±resize(len)ÖĞlen<=v.capacity()£¬ÔòÊı×éÖĞµÄsizeÉèÖÃÎªlen£¬?capacity²»±ä;
 
-reserve()ï¼šæ”¹å˜å½“å‰å®¹å™¨çš„æœ€â¼¤å®¹é‡ï¼ˆcapacityï¼‰
-1. å¦‚æœreserve(len)çš„å€¼ > å½“å‰çš„capacity()ï¼Œé‚£ä¹ˆä¼šé‡æ–°åˆ†é…â¼€å—èƒ½å­˜lenä¸ªå¯¹è±¡çš„ç©ºé—´ï¼Œç„¶åæŠŠä¹‹å‰çš„å¯¹è±¡é€š
-è¿‡copy construtorå¤åˆ¶è¿‡æ¥ï¼Œé”€æ¯ä¹‹å‰çš„å†…å­˜;
-2. å½“reserve(len)ä¸­len<=å½“å‰çš„capacity()ï¼Œåˆ™æ•°ç»„ä¸­çš„capacityä¸å˜ï¼Œ sizeä¸å˜ï¼Œå³ä¸å¯¹å®¹å™¨åšä»»ä½•æ”¹å˜ã€‚
+reserve()£º¸Ä±äµ±Ç°ÈİÆ÷µÄ×î?ÈİÁ¿£¨capacity£©
+1. Èç¹ûreserve(len)µÄÖµ > µ±Ç°µÄcapacity()£¬ÄÇÃ´»áÖØĞÂ·ÖÅä?¿éÄÜ´ælen¸ö¶ÔÏóµÄ¿Õ¼ä£¬È»ºó°ÑÖ®Ç°µÄ¶ÔÏóÍ¨
+¹ıcopy construtor¸´ÖÆ¹ıÀ´£¬Ïú»ÙÖ®Ç°µÄÄÚ´æ;
+2. µ±reserve(len)ÖĞlen<=µ±Ç°µÄcapacity()£¬ÔòÊı×éÖĞµÄcapacity²»±ä£¬ size²»±ä£¬¼´²»¶ÔÈİÆ÷×öÈÎºÎ¸Ä±ä¡£
 
 */
 
+#include <iostream>
 #include <vector>
 #include <stdio.h>
 
@@ -22,44 +23,44 @@ void vectorDemo(void)
 {
     printf("**************************vector test****************************\n");
 
-    //å®šä¹‰
+    //¶¨Òå
     vector<int> name1;
     vector< vector<int> > name2;
     vector<int> Arrayname[100];
 
-    //push_backåœ¨æœ«å°¾æ·»åŠ å…ƒç´ 
+    //push_backÔÚÄ©Î²Ìí¼ÓÔªËØ
     for (int i = 0; i < 5; i++) {
         name1.push_back(i);
     }
 
-    //å…ƒç´ è®¿é—®
+    //ÔªËØ·ÃÎÊ
     vector<int>::iterator it;
     it = name1.begin();
     for (int i = 0; i < 5; i++) {
-        printf("%d ", name1[i]);         //1é€šè¿‡ä¸‹æ ‡[]è®¿é—®, å’Œæ•°ç»„ä¸€æ ·
-        printf("%d\n", *(it + i));       //2é€šè¿‡è¿­ä»£å™¨è®¿é—®
+        printf("%d ", name1[i]);         //1Í¨¹ıÏÂ±ê[]·ÃÎÊ, ºÍÊı×éÒ»Ñù
+        printf("%d\n", *(it + i));       //2Í¨¹ıµü´úÆ÷·ÃÎÊ
     }
-    printf("\n"); //name1.end()æ˜¯å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªåœ°å€
+    printf("\n"); //name1.end()ÊÇÎ²ÔªËØµÄÏÂÒ»¸öµØÖ·
     for (vector<int>::iterator it = name1.begin(); it != name1.end(); it++) {
         printf("%d", *it);
     }
 
-    //pop_backåˆ é™¤å°¾éƒ¨å…ƒç´ 
+    //pop_backÉ¾³ıÎ²²¿ÔªËØ
     name1.pop_back();
-    printf("\n"); //name1.end()æ˜¯å°¾å…ƒç´ çš„ä¸‹ä¸€ä¸ªåœ°å€
+    printf("\n"); //name1.end()ÊÇÎ²ÔªËØµÄÏÂÒ»¸öµØÖ·
     for (vector<int>::iterator it = name1.begin(); it != name1.end(); it++) {
         printf("%d", *it);
     }
     printf("\n");
 
-    //size()è·å–å…ƒç´ ä¸ªæ•°
+    //size()»ñÈ¡ÔªËØ¸öÊı
     printf("%d\n", name1.size());
 
-    //clear()æ¸…ç©ºvector
+    //clear()Çå¿Õvector
     name1.clear();
     printf("%d\n", name1.size());
 
-    //insertæ’å…¥å…ƒç´ 
+    //insert²åÈëÔªËØ
     name1.push_back(4);
     name1.push_back(5);
     name1.push_back(6);
@@ -70,13 +71,13 @@ void vectorDemo(void)
     }
     printf("\n");
 
-    //eraseåˆ é™¤å…ƒç´ , æ³¨æ„åŒºé—´æ˜¯ å·¦é—­å³å¼€
-    name1.erase(name1.begin(), name1.begin() + 2);  //åˆ é™¤name1[0], name1[1]
+    //eraseÉ¾³ıÔªËØ, ×¢ÒâÇø¼äÊÇ ×ó±ÕÓÒ¿ª
+    name1.erase(name1.begin(), name1.begin() + 2);  //É¾³ıname1[0], name1[1]
     for (vector<int>::iterator it = name1.begin(); it != name1.end(); it++) {
         printf("%d ", *it);
     }
     printf("\n");
-    name1.erase(name1.begin());   //åˆ é™¤name1[0]
+    name1.erase(name1.begin());   //É¾³ıname1[0]
     for (vector<int>::iterator it = name1.begin(); it != name1.end(); it++) {
         printf("%d ", *it);
     }
@@ -106,3 +107,29 @@ void resizeTest()
     }
     printf("\n");
 }
+
+class testDemo
+{
+public:
+    testDemo(int num) :num(num) {
+        std::cout << "µ÷ÓÃ¹¹Ôìº¯Êı." << endl;
+    }
+    testDemo(const testDemo& other) :num(other.num) {
+        std::cout << "µ÷ÓÃ¿½±´¹¹Ôìº¯Êı." << endl;
+    }
+    testDemo(testDemo&& other) :num(other.num) {
+        std::cout << "µ÷ÓÃÒÆ¶¯¹¹Ôìº¯Êı." << endl;
+    }
+private:
+    int num;
+};
+void emplaceBackTest()
+{
+    cout << "emplace_back:" << endl;
+    std::vector<testDemo> demo1;
+    demo1.emplace_back(2);
+    cout << "push_back:" << endl;
+    std::vector<testDemo> demo2;
+    demo2.push_back(2);
+}
+
