@@ -59,7 +59,7 @@ void setBuffer(Buffer&& buffer)
 void test()
 {
     /*
-    能这样调用的的话, setBuffer必须这么声明， 两种方式:
+    能这样调用的的话, setBuffer必须这么声明，两种方式:
     1, setBuffer(Buffer&& buffer);          入参是右值引用, 因为"getBuffer()"，这个表达式是个右值
     2, setBuffer(const Buffer& buffer);     入参是带const的左值引用, "getBuffer()"，这个表达式是个右值，因为只有const左值引用才能指向右值
     */

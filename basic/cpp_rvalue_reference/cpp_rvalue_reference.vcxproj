@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="forward.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="main.cpp" />

@@ -59,8 +59,8 @@ public:
 
         row = m.row;
         col = m.col;
-        matrix = m.matrix; //直接重用将亡值m的内存
-        m.matrix = nullptr;
+        matrix = m.matrix;   //直接重用将亡值m的内存
+        m.matrix = nullptr;  //一定要设置成nullptr
     }
 
     ~Matrix() {
